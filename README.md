@@ -59,4 +59,13 @@ Create 2 more queries on your own
     LEFT JOIN Match m ON s.stadium_id = m.stadium_id
     GROUP BY s.stadium_name;
 
+# Assignment 6.2
+
+ The code is in inside "Browser_Theme" Folder.
+
+   
+
+
+   
+
 
