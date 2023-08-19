@@ -63,7 +63,61 @@ Create 2 more queries on your own
 
  The code is in inside "Browser_Theme" Folder.
 
+# Assignment 6.2
    
+ Design a Database
+
+-----Table For Doctor-----
+CREATE TABLE Doctor (
+    DoctorID INT PRIMARY KEY,
+    DoctorName VARCHAR(255),
+    Specialty VARCHAR(100),
+    -- other doctor-related attributes
+);
+
+-----Table For Clinic-----
+CREATE TABLE Clinic (
+    ClinicID INT PRIMARY KEY,
+    ClinicName VARCHAR(255),
+    -- other clinic-related attributes
+);   
+
+-----Table For Patient-----
+CREATE TABLE Patient (
+    PatientID INT PRIMARY KEY,
+    PatientName VARCHAR(255),
+    -- other patient-related attributes
+); 
+
+-----Table For Appointment -----
+CREATE TABLE Appointment (
+    AppointmentID INT PRIMARY KEY,
+    PatientID INT,
+    DoctorID INT,
+    ClinicID INT,
+    AppointmentTime DATETIME,
+    -- other appointment-related attributes
+    FOREIGN KEY (PatientID) REFERENCES Patient(PatientID),
+    FOREIGN KEY (DoctorID) REFERENCES Doctor(DoctorID),
+    FOREIGN KEY (ClinicID) REFERENCES Clinic(ClinicID)
+);
+
+-----Table For DoctorClinic -----
+CREATE TABLE DoctorClinic (
+    DoctorClinicID INT PRIMARY KEY,
+    DoctorID INT,
+    ClinicID INT,
+    FOREIGN KEY (DoctorID) REFERENCES Doctor(DoctorID),
+    FOREIGN KEY (ClinicID) REFERENCES Clinic(ClinicID)
+);
+
+
+Indexes(help the database narrow down the search to a smaller subset of rows, resulting in faster query execution): 
+
+CREATE INDEX idx_doctor_name ON Doctor (DoctorName);
+CREATE INDEX idx_clinic_name ON Clinic (ClinicName);
+CREATE INDEX idx_appointment_time ON Appointment (AppointmentTime);
+
 
 
    
